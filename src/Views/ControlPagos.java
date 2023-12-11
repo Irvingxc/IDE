@@ -16,7 +16,7 @@ public class ControlPagos extends javax.swing.JFrame {
      */
     public ControlPagos() {
         initComponents();
-        Pagos.setListarDetalleUpdate("1111-1111-11111");
+        Pagos.setListarDetalleUpdate("2222-2222-22222");
     }
 
     /**
