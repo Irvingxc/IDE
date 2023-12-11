@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7babaf7c-f25c-45c7-ace2-73f3d3059c63">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     LOCAL_MP."Id_L" AS LOCAL_MP_Id_L,
+     LOCAL_MP."Nombre_L" AS LOCAL_MP_Nombre_L,
+     LOCAL_MP."Direccion_L" AS LOCAL_MP_Direccion_L,
+     LOCAL_MP."RTN_L" AS LOCAL_MP_RTN_L,
+     LOCAL_MP."Telefono_L" AS LOCAL_MP_Telefono_L,
+     LOCAL_MP."Telefono2_L" AS LOCAL_MP_Telefono2_L
+FROM
+     "dbo"."LOCAL_MP" LOCAL_MP]]>
+	</queryString>
+	<field name="LOCAL_MP_Id_L" class="java.lang.Integer"/>
+	<field name="LOCAL_MP_Nombre_L" class="java.lang.String"/>
+	<field name="LOCAL_MP_Direccion_L" class="java.lang.String"/>
+	<field name="LOCAL_MP_RTN_L" class="java.lang.String"/>
+	<field name="LOCAL_MP_Telefono_L" class="java.lang.String"/>
+	<field name="LOCAL_MP_Telefono2_L" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="168" y="1" width="175" height="29" uuid="7ea01b8d-0fe3-47e4-93e0-c4faa2f2bf94"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE LOCAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="20" uuid="229377c9-ebda-408f-8fd0-788fdcdac321"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="1" width="25" height="20" uuid="b9218a91-4f6a-41db-bc4f-4dac3bb330eb"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="1" width="100" height="20" uuid="5293e000-6029-4e85-b14b-14f9b131ea1b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="1" width="162" height="20" uuid="2bb7ea9e-7c26-48bd-b21e-323ccf84d42f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="1" width="100" height="20" uuid="7771878c-bc3a-4252-b8c4-c7c5ab53c2bb"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="1" width="100" height="20" uuid="ba9959e8-7d97-47bc-9204-c02532c2a2ba"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono 2]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="26" height="22" uuid="6e5088b3-6315-42e7-9e7a-69aec59da7f7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="2" width="25" height="20" uuid="1b20cd11-b523-49b8-b384-f358be022d51"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LOCAL_MP_Id_L}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="2" width="100" height="20" uuid="41048256-7e66-4e46-91c9-6cb3c19e1d65"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LOCAL_MP_Nombre_L}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="2" width="162" height="38" uuid="c197d3d2-1bcf-4ac2-b2f5-6f4bd151f32e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LOCAL_MP_Direccion_L}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="2" width="100" height="20" uuid="89ec2119-6304-4919-adbb-2672226a4ab6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LOCAL_MP_Telefono_L}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="2" width="100" height="20" uuid="cf635081-4927-4749-9a58-ae4bfe91131e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LOCAL_MP_Telefono2_L}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="20" uuid="10aba05d-1e08-4ae9-85fb-4b1c92370cef"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="4" width="80" height="20" uuid="cf7779ec-63d3-4b52-8598-28fde4f39d82"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="513" y="4" width="40" height="20" uuid="c69a2f11-3883-452e-a9d9-d28b546a73b1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="100" y="4" width="100" height="20" uuid="63210c78-38c7-490b-985b-e3dde15e2657"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
