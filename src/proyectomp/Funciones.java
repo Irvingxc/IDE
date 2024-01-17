@@ -2255,7 +2255,8 @@ public class Funciones {
         ps.setString(3, s.getNo_Factura_VV());
         ps.setString(2, s.getTelefon_CL());
         ps.setInt(4, s.getSar());
-        ps.setDouble(5, s.getTotal());
+        ps.setDouble(5, s.getImpuestogravado());
+        ps.setDouble(6, s.getTotal());
         
         
         ps.executeUpdate();

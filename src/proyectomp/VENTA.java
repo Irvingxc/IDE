@@ -98,7 +98,6 @@ public class VENTA extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         sub = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtISV = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -106,6 +105,8 @@ public class VENTA extends javax.swing.JFrame {
         txtResu = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtFactura = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        TxtGravado = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
         lblCount = new javax.swing.JLabel();
@@ -237,18 +238,16 @@ public class VENTA extends javax.swing.JFrame {
         jPanel1.add(btnGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 601, 180, 69));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("SUB TOTAL");
+        jLabel9.setText("GRAVADO");
 
         sub.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         sub.setText("0");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("L");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("ISV");
 
         txtISV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtISV.setText("0");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("TOTAL");
@@ -265,6 +264,12 @@ public class VENTA extends javax.swing.JFrame {
         txtFactura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtFactura.setText("123-4553-2333");
 
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("SUB TOTAL");
+
+        TxtGravado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TxtGravado.setText("0");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -273,26 +278,31 @@ public class VENTA extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(sub, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                            .addComponent(txtISV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtResu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(sub, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtGravado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtISV, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(34, 34, 34)
-                        .addComponent(txtFactura)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(txtFactura))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtResu, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,21 +311,25 @@ public class VENTA extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtFactura))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sub, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sub, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtISV, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TxtGravado, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtISV, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtResu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 11, 330, -1));
@@ -426,13 +440,14 @@ public class VENTA extends javax.swing.JFrame {
                          
             sa.setTelefono_CL(txtIdentidad.getText());           
                 
-                     Venta();
+                     if(Venta()){
                      String d = Funciones.extraerIdMaxSAR();
                      sa.setNum_Factura(txtFactura.getText());
                      sa.setId_Sar(Integer.parseInt(d));
                      Funciones_Angel.isUpdateSar(sa);
                      obtener();
-                     limpiar();                   
+                     limpiar();
+                     }
                     
         }
            
@@ -441,7 +456,7 @@ public class VENTA extends javax.swing.JFrame {
     
     }//GEN-LAST:event_btnGeneralActionPerformed
 
-    private void Venta(){
+    private boolean Venta(){
         String fechaa = null;
         java.util.Date fecha = new java.util.Date();
                SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
@@ -453,9 +468,12 @@ public class VENTA extends javax.swing.JFrame {
         s.setTelefon_CL(this.txtIdentidad.getText());
         s.setTotal(Double.parseDouble(txtResu.getText()));
         s.setSar(Integer.parseInt(Funciones_Henry.extraerIdMaxSAR()));
+        s.setImpuestogravado(Double.parseDouble(TxtGravado.getText()));
         if(Funciones.isRegisterVenta(s)){
+            return true;
         }else{
-            JOptionPane.showMessageDialog(this, "No se pudo Realizar la venta");
+            JOptionPane.showMessageDialog(this, "No se pudo Realizar la venta, consulte con el administrador de sistema.");
+            return false;
         }
     }
     
@@ -547,26 +565,25 @@ public class VENTA extends javax.swing.JFrame {
         DefaultTableModel m = (DefaultTableModel) tblDetalle.getModel();
         double valor = 0;
         double total = 0;
+        double isv=0;
+        double gravado=0;
         
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
             double dato = Double.parseDouble(tblDetalle.getValueAt(i, 5).toString());
+            if (!Controllers.Consultas_Catalogo.PruductoValidateImpuesto(tblDetalle.getValueAt(i, 0).toString())) {
+                double isvcalculo= dato * (Double.parseDouble(Funciones.extraerImpuesto()));
+                isv +=isvcalculo;
+                gravado+=dato;
+            }
             total +=dato;    
-        }
-        txtResu.setText(String.valueOf(total));
-        
-             double subTotal= Double.parseDouble(txtResu.getText());
-          //double isv = Double.parseDouble(txtISV.getText());
-          double mame = Double.parseDouble(Funciones.extraerImpuesto());
-          double alm = mame+1;
-          double Total = subTotal/alm;          
-          BigDecimal jaja = new BigDecimal(Total);
-          jaja = jaja.setScale(2, RoundingMode.HALF_UP);
-          sub.setText(String.valueOf(jaja));
+        }     
+          BigDecimal subtotal = new BigDecimal(total);
+          subtotal = subtotal.setScale(2, RoundingMode.HALF_UP);
+          sub.setText(String.valueOf(subtotal)); //Total sin Impuesto
+          TxtGravado.setText(String.valueOf(gravado));
+          txtResu.setText(String.valueOf(total+isv)); //Total con Impuesto
           
-          double impto = Double.parseDouble(sub.getText());
-          double alma = Double.parseDouble(Funciones.extraerImpuesto());
-          float imptos = (float) (impto*alma);
-          txtISV.setText(String.valueOf(imptos));
+          txtISV.setText(String.valueOf(isv)); //total ISV
     }
     private void limpiar(){
         
@@ -600,6 +617,7 @@ public class VENTA extends javax.swing.JFrame {
             txtResu.setText(null);
             lblCount.setText(Funciones.extraerRangoMaximo());
             txtMes.setDate(null);
+            TxtGravado.setText(null);
            // Funciones.extraerRangoMaximo();
             txtFactura.setText(Funciones.extraerNumerofactura());
             
@@ -799,12 +817,12 @@ txtGrado.setText(txtGrado.getText().replaceAll("( )+", " "));
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField TXTnombre;
+    private javax.swing.JLabel TxtGravado;
     private javax.swing.JButton btnDelete;
     public static javax.swing.JButton btnGeneral;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -812,6 +830,7 @@ txtGrado.setText(txtGrado.getText().replaceAll("( )+", " "));
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

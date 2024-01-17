@@ -658,12 +658,23 @@ public class Sentencias {
         
         
           public static String REGISTRAR_Venta = "INSERT INTO Pagos("
-            +"Fecha,"+"Alumno,"+"No_Factura,"+"id_sar,"+"Total )"
-            +"VALUES(?,?,?,?,?)";
+            +"Fecha,"+"Alumno,"+"No_Factura,"+"id_sar,"+"impuestogravado,"+"Total )"
+            +"VALUES(?,?,?,?,?,?)";
           
 
           double Impto_V;
           int sar;
+          double impuestogravado;
+
+    public double getImpuestogravado() {
+        return impuestogravado;
+    }
+
+    public void setImpuestogravado(double impuestogravado) {
+        this.impuestogravado = impuestogravado;
+    }
+          
+          
 
     public int getSar() {
         return sar;

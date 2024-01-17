@@ -25,6 +25,7 @@ public class Matricula extends javax.swing.JFrame {
         initComponents();
         DefaultComboBoxModel<Encargados> comboBoxModel = Alumnos.CargarEncargados();
         jcbEncargado.setModel(comboBoxModel);
+        llenarGrado();
     }
 
     /**
@@ -44,7 +45,6 @@ public class Matricula extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Encargado = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        grado = new javax.swing.JComboBox<>();
         txtApellidos = new javax.swing.JTextField();
         jcbEncargado = new javax.swing.JComboBox<>();
         txtMensualidad = new javax.swing.JTextField();
@@ -53,6 +53,7 @@ public class Matricula extends javax.swing.JFrame {
         lblFecha = new javax.swing.JLabel();
         dateFecha = new com.toedter.calendar.JDateChooser();
         btnGuardar = new javax.swing.JButton();
+        grado = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         lblimg = new javax.swing.JLabel();
 
@@ -102,10 +103,6 @@ public class Matricula extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("V.MENSUALIDAD");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, 20));
-
-        grado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primer Grado Pre-Basica", "Segundo Grado Pre-Basica", "Tercer Grado Pre-Basica", "Primer Grado Basica", "Segundo Grado Basica", "Tercero Grado Basica", "Cuarto Grado Basica", "Quinto Grado Basica", "Sexto Grado Basica", "Septimo Grado Basica", "Octavo Grado Basica", "Noveno Grado Basica" }));
-        grado.setEditor(null);
-        jPanel1.add(grado, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 300, -1));
         jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 300, -1));
         jPanel1.add(jcbEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 300, -1));
         jPanel1.add(txtMensualidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, 300, -1));
@@ -126,6 +123,9 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, 120, 40));
+
+        grado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hoho", "hehe", "ha" }));
+        jPanel1.add(grado, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 290, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
@@ -150,6 +150,22 @@ public class Matricula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void llenarGrado(){
+        DefaultComboBoxModel<String> gradocombo = new DefaultComboBoxModel<>();
+        gradocombo.addElement("Primer Grado Pre-Basica");
+        gradocombo.addElement("Segundo Grado Pre-Basica");
+        gradocombo.addElement("Tercer Grado Pre-Basica");
+        gradocombo.addElement("Primer Grado Basica");
+        gradocombo.addElement("Segundo Grado Basica");
+        gradocombo.addElement("Tercero Grado Basica");
+        gradocombo.addElement("Cuarto Grado Basica");
+        gradocombo.addElement("Quinto Grado Basica");
+        gradocombo.addElement("Sexto Grado Basica");
+        gradocombo.addElement("Septimo Grado Basica");
+        gradocombo.addElement("Octavo Grado Basica");
+        gradocombo.addElement("Noveno Grado Basica");
+        grado.setModel(gradocombo);
+    }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Encargados encargadoselect = (Encargados) jcbEncargado.getSelectedItem();
         Alumno alumno = new Alumno();
