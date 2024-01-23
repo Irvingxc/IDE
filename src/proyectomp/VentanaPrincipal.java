@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectomp;
+import Views.ControlPagos;
 import Views.Matricula;
 
 /**
@@ -29,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnSar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         btnAlumnos = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnFactura = new javax.swing.JButton();
@@ -45,6 +47,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 130, 70));
+
+        jButton1.setText("CONTROL PAGOS (EN PRUEBA)");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 230, 70));
 
         btnAlumnos.setText("Matricular");
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +122,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         matricula.setVisible(true);
     }//GEN-LAST:event_btnAlumnosActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Views.ControlPagos controlPagos = new ControlPagos();
+        controlPagos.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -153,6 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnFactura;
     private javax.swing.JButton btnSar;
     private javax.swing.JLabel img;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -83,80 +83,32 @@ public class Usuarios {
             return null;
         }
     }
+    
+    
+    public static boolean verificardatos(Usuario usuario){
+        String consulta = "SELECT * FROM Users WHERE alias = ?";
+    try (PreparedStatement preparedStatement = conexion.prepareStatement(consulta)) {
+        preparedStatement.setString(1, usuario.getUser());
 
-/*private static byte[] hashPassword(Usuario usuario) {
-    try {
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                // Obtener el salt y la contraseña almacenados en la base de datos
+                String alias = resultSet.getString("alias");
+                String password = resultSet.getString("password");
+                String digitado = alias+password;
 
-        // Obtener la contraseña como cadena
-        String password = String.valueOf(usuario.getPassword());
-
-        // Obtener el salt como cadena (para imprimirlo)
-        String saltString = new String(usuario.getSalt(), StandardCharsets.UTF_8);
-
-        // Concatenar la contraseña y el salt
-        String saltedPassword = password + saltString;
-
-        // Imprimir información de depuración
-        System.out.println("Salted Password: " + saltedPassword);
-
-        byte[] hash = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
-
-        // Imprimir información de depuración
-        System.out.println("Generated Password Hash: " + toHexString(hash));
-
-        return hash;
-    } catch (NoSuchAlgorithmException e) {
+                // Verificar la contraseña ingresada utilizando el salt almacenado
+                // Comparar las contraseñas
+                return digitado.equals(usuario.getUser()+usuario.getPassword());
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                return false; // El usuario no existe
+            }
+        }
+    } catch (SQLException e) {
         Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, e);
         e.printStackTrace();
-        return null;
+        return false;
     }
-}*/
-
-
-    
-    /*public static boolean verificarCredenciales(Usuario usuario) {
-        JOptionPane.showMessageDialog(null, usuario.getUser());
-        String consulta = "SELECT * FROM Usuarios WHERE username = ?";
-        try (PreparedStatement preparedStatement = conexion.prepareStatement(consulta)) {
-            preparedStatement.setString(1, usuario.getUser());
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    // Obtener el salt y la contraseña almacenados en la base de datos
-                    String storedSalt = resultSet.getString("salt");
-                    String storedPasswordHash = resultSet.getString("password");
-                    // Verificar la contraseña ingresada utilizando el salt almacenado
-                    usuario.setSalt(storedSalt);
-                    String enteredPasswordHash = hashPassword(usuario);
-
-                    // Comparar las contraseñas
-                    return storedPasswordHash.equals(enteredPasswordHash);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Te encontre");
-                    return false; // El usuario no existe
-                }
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, e);
-            e.printStackTrace();
-            return false;
-        }
     }
-
-    // Método para hashear la contraseña con salt
-    private static String hashPassword(Usuario usuario) {
-        try {
-            JOptionPane.showMessageDialog(null, usuario.getPassword()+ usuario.getSalt());
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            String saltedPassword = usuario.getPassword() + usuario.getSalt();
-            byte[] hash = messageDigest.digest(saltedPassword.getBytes());
-            return Base64.getEncoder().encodeToString(hash);
-        } catch (NoSuchAlgorithmException e) {
-            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, e);
-            e.printStackTrace();
-            return null;
-        }
-    }
-*/
 }

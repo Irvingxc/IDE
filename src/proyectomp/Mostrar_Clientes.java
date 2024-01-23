@@ -78,6 +78,7 @@ Funciones_Angel.setListar("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnimprimir.setText("IMPRIMIR");
+        btnimprimir.setEnabled(false);
         btnimprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnimprimirActionPerformed(evt);
@@ -126,6 +127,7 @@ Funciones_Angel.setListar("");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 53, 255, -1));
 
         jButton1.setText("MODIFICAR");
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -142,6 +144,7 @@ Funciones_Angel.setListar("");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 594, 142, 47));
 
         jButton3.setText("ELIMINAR");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

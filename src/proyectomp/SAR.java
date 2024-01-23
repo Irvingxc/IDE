@@ -116,7 +116,7 @@ public class SAR extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         try {
-            jformaCai.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#A#A#A AA#AA ###AAA #A##AA ####A# ##")));
+            jformaCai.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("AAAAAA-AAAAAA-AAAAAA-AAAAAA-AAAAAA-AA")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
