@@ -109,7 +109,7 @@ where Pagos.id = $P{pa_id};]]>
 				<textFieldExpression><![CDATA[$F{No_Factura}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="c6ca34d0-61dc-4e32-b34b-37bd1d6f41ae" x="415" y="76" width="194" height="20"/>
+				<reportElement uuid="c6ca34d0-61dc-4e32-b34b-37bd1d6f41ae" x="415" y="76" width="313" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{CAI}]]></textFieldExpression>
 			</textField>

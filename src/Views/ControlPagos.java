@@ -16,7 +16,7 @@ public class ControlPagos extends javax.swing.JFrame {
      */
     public ControlPagos() {
         initComponents();
-        Pagos.setListarDetalleUpdate("0000-0000-00000");
+        Pagos.setListarDetalleUpdate("");
     }
 
     /**
@@ -29,10 +29,7 @@ public class ControlPagos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblName = new javax.swing.JLabel();
         txtIdentidad = new javax.swing.JTextField();
-        lblGrado = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -43,29 +40,26 @@ public class ControlPagos extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblName.setText("Nombre");
-        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        txtIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIdentidadKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 300, -1));
-
-        lblGrado.setText("Grado");
-        jPanel1.add(lblGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 170, -1));
-
-        lblApellido.setText("Apellido");
-        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 170, -1));
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                "Nombres", "Apellidos", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                true, true, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -74,19 +68,23 @@ public class ControlPagos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPagos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 1080, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1220, 490));
 
         jLabel1.setText("Identidad");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, -1));
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         lblImg.setText("jLabel1");
-        jPanel1.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1260, 540));
+        jPanel1.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1260, 620));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 1222, 507));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 1260, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtIdentidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentidadKeyReleased
+        Pagos.setListarDetalleUpdate(txtIdentidad.getText());
+    }//GEN-LAST:event_txtIdentidadKeyReleased
 
     /**
      * @param args the command line arguments
@@ -127,10 +125,7 @@ public class ControlPagos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JLabel lblApellido;
-    public static javax.swing.JLabel lblGrado;
     private javax.swing.JLabel lblImg;
-    public static javax.swing.JLabel lblName;
     public static javax.swing.JTable tblPagos;
     private javax.swing.JTextField txtIdentidad;
     // End of variables declaration//GEN-END:variables

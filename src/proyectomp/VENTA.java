@@ -390,7 +390,7 @@ public class VENTA extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 47, 22, -1));
 
-        jLabel13.setText("Mensualidades A Pagar");
+        jLabel13.setText("Mensualidad A Pagar");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
 
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
@@ -413,7 +413,7 @@ public class VENTA extends javax.swing.JFrame {
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/colegio.jpg"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1330, 770));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -503,9 +503,14 @@ public class VENTA extends javax.swing.JFrame {
         }
         
         if (txtGrado.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Revise si el Alumno esta registrado");
+            JOptionPane.showMessageDialog(rootPane, "El valor deber ser distinto a cero");
             return;
             
+        }
+        
+        if (txtPrecio.getText().equals("0")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar un Precio");
+            txtPrecio.requestFocus();
         }
         
         if (txtPrecio.getText().equals("")) {

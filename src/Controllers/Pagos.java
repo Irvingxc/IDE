@@ -28,7 +28,7 @@ public class Pagos {
     private static Connection conexion = con.getConexion();
     private  static PreparedStatement ps = null;
     
-     public static void setListarDetalleUpdate(String identidad){
+     public static void setListarDetalleUpdate(String nombre){
             DefaultTableModel modelo = (DefaultTableModel)ControlPagos.tblPagos.getModel();
             
             
@@ -43,75 +43,61 @@ public class Pagos {
                                 "MONTH(Control_Pagos.fecha) Mes, YEAR(Control_Pagos.fecha) anio FROM Control_Pagos\n" +
                                 "INNER JOIN Pagos on fk_pago = Pagos.id \n" +
                                 "INNER JOIN Alumnos on Alumnos.Identidad = Pagos.Alumno\n" +
-                                "where Alumnos.Identidad='"+identidad+"'";         
+                                "where Alumnos.Nombres like '%"+nombre+"%' or Alumnos.Apellidos like '%"+nombre+"%'";  
+         consulta = "SELECT\n"
+                 + "    Alumnos.Nombres,\n"
+                 + "    Alumnos.Apellidos,\n"
+                 + "    Alumnos.Grado,\n"
+                 + "    SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 1 THEN 1 ELSE 0 END) AS Enero,\n"
+                 + "    SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 2 THEN 1 ELSE 0 END) AS Febrero,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 3 THEN 1 ELSE 0 END) AS Marzo,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 4 THEN 1 ELSE 0 END) AS Abril,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 5 THEN 1 ELSE 0 END) AS Mayo,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 6 THEN 1 ELSE 0 END) AS Junio,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 7 THEN 1 ELSE 0 END) AS Julio,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 8 THEN 1 ELSE 0 END) AS Agosto,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 9 THEN 1 ELSE 0 END) AS Septiembre,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 10 THEN 1 ELSE 0 END) AS Octubre,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 11 THEN 1 ELSE 0 END) AS Noviembre,\n"
+                 + "	SUM(CASE WHEN MONTH(Control_Pagos.fecha) = 12 THEN 1 ELSE 0 END) AS Diciembre,\n"
+                 + "    YEAR(Control_Pagos.fecha) AS Anio\n"
+                 + "FROM\n"
+                 + "    Control_Pagos\n"
+                 + "INNER JOIN Pagos ON fk_pago = Pagos.id\n"
+                 + "INNER JOIN Alumnos ON Alumnos.Identidad = Pagos.Alumno\n"
+                 + "where Alumnos.Nombres like '%"+nombre+"%' or Alumnos.Apellidos like '%"+nombre+"%'\n"
+                 + "GROUP BY\n"
+                 + "    Alumnos.Nombres,\n"
+                 + "    Alumnos.Apellidos,\n"
+                 + "    Alumnos.Grado,\n"
+                 + "    YEAR(Control_Pagos.fecha)";
             
         
-        String datos[] = new String[12];
+        String datos[] = new String[14];
         
         try{
  Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(consulta);
-            
-            datos[0] = "Sin Cancelar";
-            datos[1] = "Sin Cancelar";
-            datos[2] = "Sin Cancelar";
-            datos[3] = "Sin Cancelar";
-            datos[4] = "Sin Cancelar";
-            datos[5] = "Sin Cancelar";
-            datos[6] = "Sin Cancelar";
-            datos[7] = "Sin Cancelar";
-            datos[8] = "Sin Cancelar";
-            datos[9] = "Sin Cancelar";
-            datos[10] = "Sin Cancelar";
-            datos[11] = "Sin Cancelar";
+            ResultSet rs = st.executeQuery(consulta);            
             while(rs.next()){
-                switch (rs.getInt("Mes")) {
-            case 1:
-                datos[0] = "Pagado";
-                break;
-            case 2:
-                datos[1] = "Pagado";
-                break;
-            case 3:
-                datos[2] = "Pagado";
-                break;
-            case 4:
-                datos[3] = "Pagado";
-                break;
-            case 5:
-                datos[4] = "Pagado";
-                break;
-            case 6:
-                datos[5] = "Pagado";
-                break;
-            case 7:
-                datos[6] = "Pagado";
-                break;
-            case 8:
-                datos[7] = "Pagado";
-                break;
-            case 9:
-                datos[8] = "Pagado";
-                break;
-            case 10:
-                datos[9] = "Pagado";
-                break;
-            case 11:
-                datos[10] = "Pagado";
-                break;
-            case 12:
-                datos[11] = "Pagado";
-                break;
-            default:
-                break;
-        }
+                datos[0] = rs.getString("Nombres");
+                datos[1] = rs.getString("Apellidos");
+                datos[2] = rs.getString("Enero").equals("1") ? "Pagado": "Pendiente";
+                datos[3] = rs.getString("Febrero").equals("1") ? "Pagado": "Pendiente";
+                datos[4] = rs.getString("Marzo").equals("1") ? "Pagado": "Pendiente";
+                datos[5] = rs.getString("Abril").equals("1") ? "Pagado": "Pendiente";
+                datos[6] = rs.getString("Mayo").equals("1") ? "Pagado": "Pendiente";
+                datos[7] = rs.getString("Junio").equals("1") ? "Pagado": "Pendiente";
+                datos[8] = rs.getString("Julio").equals("1") ? "Pagado": "Pendiente";
+                datos[9] = rs.getString("Agosto").equals("1") ? "Pagado": "Pendiente";
+                datos[10] = rs.getString("Septiembre").equals("1") ? "Pagado": "Pendiente";
+                datos[11] = rs.getString("Octubre").equals("1") ? "Pagado": "Pendiente";
+                datos[12] = rs.getString("Noviembre").equals("1") ? "Pagado": "Pendiente";
+                datos[13] = rs.getString("Diciembre").equals("1") ? "Pagado": "Pendiente";
                 modelo.addRow(datos);
-                DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            }
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
                 tcr.setHorizontalAlignment(SwingConstants.RIGHT);
                 ControlPagos.tblPagos.setModel(modelo);
-                //ControlPagos.tblMostrarEmp.getColumnModel().getColumn(8).setCellRenderer(tcr);
-                
-            }
            // MOSTRARCARGO.tblCa.setModel(modelo);//la tabla se actualiza. HacerCalculos(r);
         }catch (SQLException ex){
             

@@ -37,7 +37,7 @@ public class Consultas_Catalogo {
             if(rs.next()){
                 
                 valor = rs.getBoolean(1);
-                JOptionPane.showMessageDialog(null,valor);
+                //JOptionPane.showMessageDialog(null,valor);
 //            }
                 
             }

@@ -101,7 +101,6 @@ public class Usuarios {
                 // Comparar las contraseñas
                 return digitado.equals(usuario.getUser()+usuario.getPassword());
             } else {
-                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                 return false; // El usuario no existe
             }
         }

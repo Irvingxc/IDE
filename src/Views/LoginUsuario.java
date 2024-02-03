@@ -5,6 +5,7 @@
 package Views;
 
 import Models.Usuario;
+import javax.swing.JOptionPane;
 import proyectomp.VentanaPrincipal;
 
 /**
@@ -97,6 +98,8 @@ public class LoginUsuario extends javax.swing.JFrame {
         if(Controllers.Usuarios.verificardatos(user)){
             ventanaPrincipal.setVisible(true);
             dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos incorrectos");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
