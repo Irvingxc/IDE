@@ -91,7 +91,7 @@ where Pagos.id = $P{pa_id};]]>
 				<textElement>
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[RTN: 1706199800431]]></text>
+				<text><![CDATA[RTN: 08019021301711]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="d76bcb93-5d8b-415f-b0a8-ab26e1920ab7" x="339" y="54" width="65" height="20"/>

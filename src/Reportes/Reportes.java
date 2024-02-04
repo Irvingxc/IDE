@@ -60,7 +60,7 @@ public class Reportes {
         Connection a;
         JasperReport reporte=null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\IDE\\src\\Reportes\\Factura.jasper");
-        a=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VRUMJHI;databaseName=IDE", "sa", "1234");
+        a=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "IDE_2023_excellence");
    JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);
 //        JasperPrintManager.printReport(print, false);
     JasperViewer ver=new JasperViewer(print, false);

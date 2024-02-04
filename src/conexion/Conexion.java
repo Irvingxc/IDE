@@ -24,7 +24,7 @@ public class Conexion {
 		try {
 			
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                      conection=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VRUMJHI;databaseName=IDE", "sa", "1234");
+                      conection=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "IDE_2023_excellence");
                       return conection;
                                             // conection=DriverManager.getConnection("jdbc:sqlserver://;database=PROYECTO_MP;integratedSecurity=true;");
                         
