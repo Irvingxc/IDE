@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import Views.ControlPagos;
+import Views.MostrarFacturas;
+import Views.PagosPorAlumnos;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -29,12 +31,7 @@ public class Pagos {
     private  static PreparedStatement ps = null;
     
      public static void setListarDetalleUpdate(String nombre){
-            DefaultTableModel modelo = (DefaultTableModel)ControlPagos.tblPagos.getModel();
-            
-            
-            //modelo.fireTableDataChanged();
- 
-            
+            DefaultTableModel modelo = (DefaultTableModel)PagosPorAlumnos.tblPagos.getModel();            
             while(modelo.getRowCount() > 0 ){
                 modelo.removeRow(0);
                 
@@ -97,7 +94,7 @@ public class Pagos {
             }
             DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
                 tcr.setHorizontalAlignment(SwingConstants.RIGHT);
-                ControlPagos.tblPagos.setModel(modelo);
+                PagosPorAlumnos.tblPagos.setModel(modelo);
            // MOSTRARCARGO.tblCa.setModel(modelo);//la tabla se actualiza. HacerCalculos(r);
         }catch (SQLException ex){
             
@@ -105,4 +102,43 @@ public class Pagos {
             
         }
             }
+     
+     
+    public static void setListarVentas(String nombre) {
+        DefaultTableModel modelo = (DefaultTableModel) MostrarFacturas.tblPagos.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+
+        }
+        String consulta = "select id, CONCAT(Nombres, '', Apellidos) Nombre, No_Factura, Fecha, Total \n"
+                + "from Pagos inner join Alumnos on Alumnos.Identidad = Pagos.Alumno\n"
+                + "where Alumnos.Nombres like '%" + nombre + "%' or Alumnos.Apellidos like '%" + nombre + "%'";
+
+        String datos[] = new String[5];
+
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(consulta);
+            while (rs.next()) {
+                datos[0] = rs.getString("id");
+                datos[1] = rs.getString("Nombre");
+                datos[2] = rs.getString("No_Factura");
+                datos[3] = rs.getString("Fecha");
+                datos[4] = rs.getString("Total");
+                modelo.addRow(datos);
+            }
+                    MostrarFacturas.tblPagos.getColumnModel().getColumn(0).setMaxWidth(0);
+                    MostrarFacturas.tblPagos.getColumnModel().getColumn(0).setMinWidth(0);
+                    MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+                    MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.RIGHT);
+            MostrarFacturas.tblPagos.setModel(modelo);
+            // MOSTRARCARGO.tblCa.setModel(modelo);//la tabla se actualiza. HacerCalculos(r);
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Pagos.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 }

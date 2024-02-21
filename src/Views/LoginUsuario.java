@@ -91,7 +91,7 @@ public class LoginUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        Views.Principal ventanaPrincipal = new Principal();
         Models.Usuario user = new Usuario();
         user.setUser(txtAlias.getText());
         user.setPassword(txtPasword.getText());
