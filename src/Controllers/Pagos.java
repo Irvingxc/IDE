@@ -110,9 +110,9 @@ public class Pagos {
             modelo.removeRow(0);
 
         }
-        String consulta = "select id, CONCAT(Nombres, '', Apellidos) Nombre, No_Factura, Fecha, Total \n"
+        String consulta = "select id, CONCAT(Nombres, ' ', Apellidos) Nombre, No_Factura, Fecha, Total \n"
                 + "from Pagos inner join Alumnos on Alumnos.Identidad = Pagos.Alumno\n"
-                + "where Alumnos.Nombres like '%" + nombre + "%' or Alumnos.Apellidos like '%" + nombre + "%'";
+                + "where Alumnos.Nombres like '%" + nombre + "%' or Alumnos.Apellidos like '%" + nombre + "%' order by No_Factura";
 
         String datos[] = new String[5];
 

@@ -23,15 +23,14 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        setSize(500,400);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        panel.setPreferredSize(new Dimension());
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //panel.setPreferredSize(new Dimension());
     }
 
     
      private void identificarVista(JPanel vista){
-        vista.setSize(1000, 500);
+        vista.setSize(1100, 1000);
         vista.setLocation(0,0);
         content.removeAll();      
         content.add(vista, BorderLayout.CENTER);
@@ -102,7 +101,7 @@ public class Principal extends javax.swing.JFrame {
         });
         panel.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 140, 60));
 
-        jButton5.setText("Facturar");
+        jButton5.setText("FACTURAR");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -116,9 +115,10 @@ public class Principal extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +128,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panel.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 1120, 840));
+        panel.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 1070, 840));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));

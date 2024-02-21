@@ -73,7 +73,7 @@ public class PagosPorAlumnos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPagos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 52, 960, 590));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 52, 1020, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1200, 700));

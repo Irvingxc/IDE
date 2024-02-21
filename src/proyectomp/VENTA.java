@@ -7,6 +7,7 @@ package proyectomp;
 import Models.Alumno;
 import Controllers.Alumnos;
 import Reportes.Reportes;
+import Views.SeleccionarAlumno;
 import conexion.Conexion;
 import java.awt.Event;
 import java.awt.event.KeyAdapter;
@@ -749,9 +750,8 @@ txtGrado.setText(txtGrado.getText().replaceAll("( )+", " "));
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtIdentidad.setText("1234-5678");
-        TXTnombre.setText("Consumidor");
-        txtGrado.setText("Final");
+        Views.SeleccionarAlumno seleccionarAlumno = new SeleccionarAlumno();
+        seleccionarAlumno.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
