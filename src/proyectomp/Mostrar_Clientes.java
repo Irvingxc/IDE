@@ -32,19 +32,12 @@ public class Mostrar_Clientes extends javax.swing.JFrame {
      */
     public Mostrar_Clientes() {
         initComponents();
-        this.setResizable(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(NORMAL);
         
         InputMap map3 = jTextField1.getInputMap(JTextField.WHEN_FOCUSED); 
-    map3.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
-
-//        String[] tituloTable = new String[]
-//                {"TELEFONO", "NOMBRE", "APELLIDO", "DIRECCION"          
-//        };
-//        dtm.setColumnIdentifiers(tituloTable);
-//        jTable1.setModel(dtm);
-Funciones_Angel.setListar("");
+        map3.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+            Funciones_Angel.setListar("");
         
     
     
@@ -84,7 +77,7 @@ Funciones_Angel.setListar("");
                 btnimprimirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnimprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 580, 150, 50));
+        jPanel1.add(btnimprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 550, 150, 50));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,14 +100,14 @@ Funciones_Angel.setListar("");
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, 1352, 443));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1130, 490));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("CARTERA DE CLIENTES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 18, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 270, 30));
 
         jLabel2.setText("BUSCAR POR NOMBRE");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -124,7 +117,7 @@ Funciones_Angel.setListar("");
                 jTextField1KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 53, 255, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 170, -1));
 
         jButton1.setText("MODIFICAR");
         jButton1.setEnabled(false);
@@ -133,7 +126,7 @@ Funciones_Angel.setListar("");
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 145, 47));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 145, 47));
 
         jButton2.setText("REGISTRAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +134,7 @@ Funciones_Angel.setListar("");
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 594, 142, 47));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 142, 47));
 
         jButton3.setText("ELIMINAR");
         jButton3.setEnabled(false);
@@ -150,10 +143,11 @@ Funciones_Angel.setListar("");
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 580, 146, 47));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 146, 47));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 690));
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 620));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

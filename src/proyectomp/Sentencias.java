@@ -658,8 +658,8 @@ public class Sentencias {
         
         
           public static String REGISTRAR_Venta = "INSERT INTO Pagos("
-            +"Fecha,"+"Alumno,"+"No_Factura,"+"id_sar,"+"impuestogravado,"+"Total )"
-            +"VALUES(?,?,?,?,?,?)";
+            +"Fecha,"+"Alumno,"+"No_Factura,"+"id_sar,"+"impuestogravado,"+"Total,"+"Anulada )"
+            +"VALUES(?,?,?,?,?,?,?)";
           
 
           double Impto_V;

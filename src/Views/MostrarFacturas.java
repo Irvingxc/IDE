@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import proyectomp.Funciones;
 
@@ -24,6 +25,8 @@ public class MostrarFacturas extends javax.swing.JPanel {
     public MostrarFacturas() {
         initComponents();
         Controllers.Pagos.setListarVentas("");
+        	
+        this.tblPagos.setDefaultRenderer(Object.class, new Renderizado());
     }
 
     /**
@@ -37,6 +40,7 @@ public class MostrarFacturas extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
+        btnAnular = new javax.swing.JButton();
         txtAlumno = new javax.swing.JTextField();
         alumno = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,17 +49,17 @@ public class MostrarFacturas extends javax.swing.JPanel {
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Alumno", "Factura", "Fecha", "Total"
+                "Id", "Alumno", "Factura", "Fecha", "Total", "Anulada"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -74,9 +78,18 @@ public class MostrarFacturas extends javax.swing.JPanel {
             tblPagos.getColumnModel().getColumn(2).setResizable(false);
             tblPagos.getColumnModel().getColumn(3).setResizable(false);
             tblPagos.getColumnModel().getColumn(4).setResizable(false);
+            tblPagos.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1080, 490));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1080, 480));
+
+        btnAnular.setText("ANULAR");
+        btnAnular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnularActionPerformed(evt);
+            }
+        });
+        add(btnAnular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 130, 50));
 
         txtAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -117,9 +130,23 @@ public class MostrarFacturas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblPagosMouseClicked
 
+    private void btnAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularActionPerformed
+        int fila = tblPagos.getSelectedRow();
+        String id = tblPagos.getValueAt(fila, 0).toString();
+        if(Controllers.Pagos.AnularFactura(id)){
+            JOptionPane.showMessageDialog(null, "Se anulo la Factura Exitosamente.");
+            Controllers.Pagos.setListarVentas("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Algo salio mal, favor contactar con Irving Calix");
+        }
+        
+        
+    }//GEN-LAST:event_btnAnularActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alumno;
+    private javax.swing.JButton btnAnular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable tblPagos;

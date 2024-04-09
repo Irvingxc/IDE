@@ -110,11 +110,11 @@ public class Pagos {
             modelo.removeRow(0);
 
         }
-        String consulta = "select id, CONCAT(Nombres, ' ', Apellidos) Nombre, No_Factura, Fecha, Total \n"
+        String consulta = "select id, CONCAT(Nombres, ' ', Apellidos) Nombre, No_Factura, Fecha, Total, Anulada \n"
                 + "from Pagos inner join Alumnos on Alumnos.Identidad = Pagos.Alumno\n"
                 + "where Alumnos.Nombres like '%" + nombre + "%' or Alumnos.Apellidos like '%" + nombre + "%' order by No_Factura";
 
-        String datos[] = new String[5];
+        String datos[] = new String[6];
 
         try {
             Statement st = conexion.createStatement();
@@ -125,12 +125,17 @@ public class Pagos {
                 datos[2] = rs.getString("No_Factura");
                 datos[3] = rs.getString("Fecha");
                 datos[4] = rs.getString("Total");
+                datos[5] = rs.getString("Anulada");
                 modelo.addRow(datos);
             }
                     MostrarFacturas.tblPagos.getColumnModel().getColumn(0).setMaxWidth(0);
                     MostrarFacturas.tblPagos.getColumnModel().getColumn(0).setMinWidth(0);
                     MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
                     MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+                    MostrarFacturas.tblPagos.getColumnModel().getColumn(5).setMaxWidth(0);
+                    MostrarFacturas.tblPagos.getColumnModel().getColumn(5).setMinWidth(0);
+                    MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(0);
+                    MostrarFacturas.tblPagos.getTableHeader().getColumnModel().getColumn(5).setMinWidth(0);
             DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
             tcr.setHorizontalAlignment(SwingConstants.RIGHT);
             MostrarFacturas.tblPagos.setModel(modelo);
@@ -139,6 +144,24 @@ public class Pagos {
 
             Logger.getLogger(Pagos.class.getName()).log(Level.SEVERE, null, ex);
 
+        }
+    }
+    
+    
+    public static boolean AnularFactura(String id_factura){
+        String sql = "UPDATE Pagos SET "
+           +"Anulada=? "
+            +"WHERE id=?";
+        
+        try{
+        ps = conexion.prepareStatement(sql);
+        ps.setString(1, "1");
+        ps.setString(2, id_factura);
+        ps.executeUpdate();
+        return true;
+        } catch (SQLException ex){
+            Logger.getLogger(Pagos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }

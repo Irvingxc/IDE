@@ -2257,7 +2257,7 @@ public class Funciones {
         ps.setInt(4, s.getSar());
         ps.setDouble(5, s.getImpuestogravado());
         ps.setDouble(6, s.getTotal());
-        
+        ps.setInt(7, 0);
         
         ps.executeUpdate();
         return true;
