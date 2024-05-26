@@ -78,18 +78,18 @@ public class Pagos {
             while(rs.next()){
                 datos[0] = rs.getString("Nombres");
                 datos[1] = rs.getString("Apellidos");
-                datos[2] = rs.getString("Enero").equals("1") ? "Pagado": "Pendiente";
-                datos[3] = rs.getString("Febrero").equals("1") ? "Pagado": "Pendiente";
-                datos[4] = rs.getString("Marzo").equals("1") ? "Pagado": "Pendiente";
-                datos[5] = rs.getString("Abril").equals("1") ? "Pagado": "Pendiente";
-                datos[6] = rs.getString("Mayo").equals("1") ? "Pagado": "Pendiente";
-                datos[7] = rs.getString("Junio").equals("1") ? "Pagado": "Pendiente";
-                datos[8] = rs.getString("Julio").equals("1") ? "Pagado": "Pendiente";
-                datos[9] = rs.getString("Agosto").equals("1") ? "Pagado": "Pendiente";
-                datos[10] = rs.getString("Septiembre").equals("1") ? "Pagado": "Pendiente";
-                datos[11] = rs.getString("Octubre").equals("1") ? "Pagado": "Pendiente";
-                datos[12] = rs.getString("Noviembre").equals("1") ? "Pagado": "Pendiente";
-                datos[13] = rs.getString("Diciembre").equals("1") ? "Pagado": "Pendiente";
+                datos[2] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[3] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[4] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[5] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[6] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[7] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[8] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[9] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[10] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[11] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[12] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[13] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
                 modelo.addRow(datos);
             }
             DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
