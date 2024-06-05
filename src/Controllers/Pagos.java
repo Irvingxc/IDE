@@ -78,18 +78,18 @@ public class Pagos {
             while(rs.next()){
                 datos[0] = rs.getString("Nombres");
                 datos[1] = rs.getString("Apellidos");
-                datos[2] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[3] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[4] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[5] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[2] = rs.getInt("Enero")>=1 ? "Pagado": "Pendiente";
+                datos[3] = rs.getInt("Febrero")>=1 ? "Pagado": "Pendiente";
+                datos[4] = rs.getInt("Marzo")>=1 ? "Pagado": "Pendiente";
+                datos[5] = rs.getInt("Abril")>=1 ? "Pagado": "Pendiente";
                 datos[6] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[7] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[8] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[9] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[10] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[11] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[12] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
-                datos[13] = rs.getInt("Mayo")>=1 ? "Pagado": "Pendiente";
+                datos[7] = rs.getInt("Junio")>=1 ? "Pagado": "Pendiente";
+                datos[8] = rs.getInt("Julio")>=1 ? "Pagado": "Pendiente";
+                datos[9] = rs.getInt("Agosto")>=1 ? "Pagado": "Pendiente";
+                datos[10] = rs.getInt("Septiembre")>=1 ? "Pagado": "Pendiente";
+                datos[11] = rs.getInt("Octubre")>=1 ? "Pagado": "Pendiente";
+                datos[12] = rs.getInt("Noviembre")>=1 ? "Pagado": "Pendiente";
+                datos[13] = rs.getInt("Diciembre")>=1 ? "Pagado": "Pendiente";
                 modelo.addRow(datos);
             }
             DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
