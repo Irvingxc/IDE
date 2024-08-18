@@ -37,6 +37,7 @@
                     Control_Pagos
                  INNER JOIN Pagos ON fk_pago = Pagos.id
                  INNER JOIN Alumnos ON Alumnos.Identidad = Pagos.Alumno
+		WHERE Pagos.anulada =0
                  GROUP BY
                     Alumnos.Nombres,
                     Alumnos.Apellidos,
