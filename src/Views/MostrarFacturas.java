@@ -81,7 +81,7 @@ public class MostrarFacturas extends javax.swing.JPanel {
             tblPagos.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1080, 480));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1110, 490));
 
         btnAnular.setText("ANULAR");
         btnAnular.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class MostrarFacturas extends javax.swing.JPanel {
         add(alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 630));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 630));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAlumnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAlumnoKeyReleased

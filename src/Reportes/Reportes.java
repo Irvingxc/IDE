@@ -24,6 +24,15 @@ import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.commons.collections.map.HashedMap;
 
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import java.io.InputStream;
+
 /**
  *
  * @author espin
@@ -35,7 +44,7 @@ public class Reportes {
     public void ReportePlanilla(HashMap datos) throws SQLException, JRException{
         Connection a;
         String path = "C:/IDE/src/Reportes/Factura.jasper";
-   a=DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=PROYECTO_MP", "sa", "123");
+   a=conexion;
    JasperReport reporte=null;
    reporte=(JasperReport) JRLoader.loadObjectFromFile(path);   
    JasperPrint print=JasperFillManager.fillReport(reporte, datos, conexion);
@@ -46,7 +55,7 @@ public class Reportes {
     
     public void ReporteCargos() throws SQLException, JRException{
     Connection a;
-    a=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VRUMJHI;databaseName=PROYECTO_MP", "sa", "1234");
+    a=conexion;
     JasperReport reporte=null;
     reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\IDE\\src\\Reportes\\Cargo.jasper");
     JasperPrint print=JasperFillManager.fillReport(reporte, null, a);
@@ -60,8 +69,9 @@ public class Reportes {
         Connection a;
         JasperReport reporte=null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\IDE\\src\\Reportes\\Factura.jasper");
-        a=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "IDE_2023_excellence");
-   JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);
+        //a=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "1234");
+        a=conexion;
+        JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);
 //        JasperPrintManager.printReport(print, false);
     JasperViewer ver=new JasperViewer(print, false);
    ver.setTitle("Factura");
@@ -79,9 +89,38 @@ public class Reportes {
             tela.setVisible(true);*/
     }
     
+        public void ReporteCobranza(HashMap datos) throws SQLException, JRException{
+        Connection a;
+        InputStream reporteStream = getClass().getResourceAsStream("/Reportes/EstadoCuenta.jasper");
+        JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteStream);
+
+        //a=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "1234");
+        a=conexion;
+        JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);
+//        JasperPrintManager.printReport(print, false);
+        JasperViewer ver=new JasperViewer(print, false);
+        ver.setTitle("Cobranza");
+        ver.setVisible(true);
+        }
+    
+        public void ReporteMensual() throws SQLException, JRException{
+        Connection a;
+        JasperReport reporte=null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\IDE\\src\\Reportes\\ReporteMensual.jasper");
+        //a=DriverManager.getConnection("jdbc:sqlserver://127.0.0.1;databaseName=IDE", "sa", "1234");
+        a=conexion;
+        JasperPrint print=JasperFillManager.fillReport(reporte, null, a);
+//        JasperPrintManager.printReport(print, false);
+    JasperViewer ver=new JasperViewer(print, false);
+   ver.setTitle("Reporte");
+   ver.setVisible(true);
+   
+    }
+    
     public void FacturaPago(HashMap datos) throws SQLException, JRException{
         Connection a;
-   a=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-TBCLTBQ\\IDE;databaseName=IDE", "sa", "1234");
+        a=conexion;
+   //a=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-TBCLTBQ\\IDE;databaseName=IDE", "sa", "1234");
    JasperReport reporte=null;
    reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\IDE\\src\\Reportes\\Venta.jasper");   
    JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);
@@ -91,7 +130,7 @@ public class Reportes {
     
        public void ReporteVentas(HashMap datos) throws SQLException, JRException{
         Connection a;
-   a=DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=PROYECTO_MP", "sa", "123");
+   a=conexion;
    JasperReport reporte=null;
    reporte=(JasperReport) JRLoader.loadObjectFromFile("C:\\11_MEGAPIZZA\\src\\Reportes\\Venta.jasper");   
    JasperPrint print=JasperFillManager.fillReport(reporte, datos, a);

@@ -164,6 +164,7 @@ public class Matricula extends javax.swing.JFrame {
         gradocombo.addElement("Septimo Grado Basica");
         gradocombo.addElement("Octavo Grado Basica");
         gradocombo.addElement("Noveno Grado Basica");
+        gradocombo.addElement("Decimo");
         grado.setModel(gradocombo);
     }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

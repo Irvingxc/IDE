@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75bec82c-558c-430d-b8ad-56d14965d8e4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="pa_alumno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pa_anio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pa_cliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pa_name_alumno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[WITH Meses AS (
+    SELECT 1 AS Mes UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL 
+    SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL 
+    SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL 
+    SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12
+)
+
+SELECT 
+    M.Mes,
+    DATENAME(MONTH, DATEFROMPARTS($P{pa_anio}, M.Mes, 1)) AS NombreMes,
+    'Mensualidad' AS TipoPago,
+    ISNULL(P.monto,0) monto,
+    ISNULL(FORMAT(P.FechaPago, 'yyyy-MM-dd'), 'Sin pago') AS FechaPago,
+    CASE 
+        WHEN P.FechaPago IS NOT NULL THEN 'Pagado'
+        ELSE 'Sin pagar'
+    END AS Estado
+FROM Meses M
+LEFT JOIN (
+    SELECT 
+        C.fecha AS FechaControl,
+        P.Fecha AS FechaPago,
+        P.Alumno,
+        C.monto
+    FROM Control_Pagos C
+    INNER JOIN Pagos P ON P.id = C.fk_pago
+    WHERE P.Alumno = $P{pa_alumno}
+      AND YEAR(C.Fecha) = $P{pa_anio}
+      AND P.Anulada = 0
+) P
+    ON MONTH(P.FechaControl) = M.Mes AND YEAR(P.FechaControl) = $P{pa_anio}
+	ORDER BY M.Mes;]]>
+	</queryString>
+	<field name="Mes" class="java.lang.Integer"/>
+	<field name="NombreMes" class="java.lang.String"/>
+	<field name="TipoPago" class="java.lang.String"/>
+	<field name="monto" class="java.math.BigDecimal"/>
+	<field name="FechaPago" class="java.lang.String"/>
+	<field name="Estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="190" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f772e1bf-7c28-471c-90c5-297d21a72723" mode="Opaque" x="0" y="-17" width="802" height="70" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+				<staticText>
+					<reportElement uuid="6fe27ea7-4450-4830-9e07-3ed6d10db4b3" style="Title" x="130" y="9" width="598" height="37" forecolor="#000000"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="24" isBold="false"/>
+					</textElement>
+					<text><![CDATA[INVERSIONES CALIX GUTIÉRREZ S. DE R.L.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4a3684fa-a712-44cd-bb8c-1693dc51c7ad" x="173" y="46" width="402" height="20" forecolor="#000000" backcolor="#000000"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INSTITUTE FOR THE DEVELOPMENT OF EXCELLENCE]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement uuid="4a3684fa-a712-44cd-bb8c-1693dc51c7ad" x="13" y="68" width="402" height="35" forecolor="#000000" backcolor="#000000"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado de cuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c26bf8f-7ce6-4012-ba01-66c52da86af0" style="Column header" x="13" y="114" width="77" height="18" forecolor="#000000" backcolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c26bf8f-7ce6-4012-ba01-66c52da86af0" style="Column header" x="13" y="132" width="77" height="18" forecolor="#000000" backcolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alumno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c26bf8f-7ce6-4012-ba01-66c52da86af0" style="Column header" x="13" y="150" width="77" height="18" forecolor="#000000" backcolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6ddbe425-bd94-4eda-81f1-2d31fe655950" x="90" y="148" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pa_anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ddbe425-bd94-4eda-81f1-2d31fe655950" x="90" y="128" width="345" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pa_name_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ddbe425-bd94-4eda-81f1-2d31fe655950" x="90" y="114" width="345" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pa_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5815540e-d2c0-475b-bf8d-981c372f8c88" style="Column header" x="303" y="0" width="84" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c53e0062-feb9-4b92-ac32-a42fe741133f" style="Column header" x="415" y="0" width="100" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c26bf8f-7ce6-4012-ba01-66c52da86af0" style="Column header" x="2" y="0" width="255" height="18" forecolor="#000000" backcolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c175d69b-5978-4902-90da-4f43f8721bdd" style="Column header" x="544" y="0" width="77" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement uuid="cd5a4ba7-5db2-46e0-9c10-943ccc33e619" style="Row" mode="Opaque" x="0" y="0" width="797" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="efff9af3-7aeb-4ddb-9a5a-683543b34bd3" style="Detail" positionType="Float" x="302" y="0" width="85" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TipoPago}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="adeddc87-d197-407e-a9fb-e8f8d2942021" style="Detail" positionType="Float" x="415" y="0" width="100" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="01b7ffc3-5836-41cb-b203-32d2f5f77ebb" style="Detail" positionType="Float" x="2" y="0" width="255" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NombreMes}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="adeddc87-d197-407e-a9fb-e8f8d2942021" style="Detail" positionType="Float" x="544" y="0" width="100" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement uuid="562b2dcb-90bf-4151-ba04-2491f4919bc7" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<frame>
+				<reportElement uuid="80fc3a80-cfe2-4906-9375-be384606ae85" mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<staticText>
+					<reportElement uuid="0dfdfcf8-b0b8-4968-ac8a-d4820a7b60cc" x="2" y="3" width="223" height="22" forecolor="#FFFFFF"/>
+					<textElement/>
+					<text><![CDATA[ETHICS, SCIENCE AND TECHNOLOGY]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="46"/>
+	</summary>
+</jasperReport>

@@ -50,7 +50,8 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_cob = new javax.swing.JButton();
+        btn_par = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         content = new javax.swing.JPanel();
@@ -85,13 +86,21 @@ public class Principal extends javax.swing.JFrame {
         });
         panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 140, 60));
 
-        jButton4.setText("PAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_cob.setText("PAR");
+        btn_cob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_cobActionPerformed(evt);
             }
         });
-        panel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 140, 60));
+        panel.add(btn_cob, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 140, 60));
+
+        btn_par.setText("Cobranza");
+        btn_par.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_parActionPerformed(evt);
+            }
+        });
+        panel.add(btn_par, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 140, 60));
 
         jButton6.setText("FACTURAS");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -149,10 +158,10 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_cobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cobActionPerformed
         SAR sar = new SAR();
         sar.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_cobActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         PagosPorAlumnos controlPagos = new PagosPorAlumnos();
@@ -178,6 +187,11 @@ public class Principal extends javax.swing.JFrame {
         MostrarFacturas mostrarFacturas = new MostrarFacturas();
         identificarVista(mostrarFacturas);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btn_parActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_parActionPerformed
+        Cobranza cob = new Cobranza();
+        identificarVista(cob);
+    }//GEN-LAST:event_btn_parActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,11 +229,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cob;
+    private javax.swing.JButton btn_par;
     private javax.swing.JPanel content;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

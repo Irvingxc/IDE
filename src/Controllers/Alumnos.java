@@ -17,11 +17,14 @@ import proyectomp.Funciones;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import Models.Alumno;
+import Views.Cobranza;
 import Views.MostrarFacturas;
 import Views.SeleccionarAlumno;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.sql.CallableStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -143,5 +146,39 @@ public class Alumnos {
 
         }
     }
+    
+    
+    public static void setListarAlumnosPorEstado(String nombre, int anio, String fecha) {
+        DefaultTableModel modelo = (DefaultTableModel) Cobranza.tblPagos.getModel();
+    while (modelo.getRowCount() > 0) {
+        modelo.removeRow(0);
+    }
+
+    String datos[] = new String[4];
+
+    try {
+        
+        CallableStatement cs = conexion.prepareCall("{ call sp_AlumnosSinPagoAntesDeFecha(?, ?, ?) }"); 
+        cs.setInt(1, anio); // por ejemplo: 2024
+        cs.setString(2, fecha); 
+        cs.setString(3, nombre);
+
+        ResultSet rs = cs.executeQuery();
+        while (rs.next()) {
+            datos[0] = rs.getString("N_Alumno");
+            datos[1] = rs.getString("Identidad");
+            datos[2] = rs.getString("Grado");
+            datos[3] = rs.getString("N_Cliente");
+            modelo.addRow(datos);
+        }
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.RIGHT);
+        Cobranza.tblPagos.setModel(modelo);
+
+    } catch (SQLException ex) {
+        Logger.getLogger(Pagos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
     
 }

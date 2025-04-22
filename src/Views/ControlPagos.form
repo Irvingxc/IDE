@@ -62,8 +62,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="14" rowCount="4">
-                    <Column editable="true" title="Nombres" type="java.lang.Object"/>
-                    <Column editable="true" title="Apellidos" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombres" type="java.lang.Object"/>
+                    <Column editable="false" title="Apellidos" type="java.lang.Object"/>
                     <Column editable="false" title="Enero" type="java.lang.Object"/>
                     <Column editable="false" title="Febrero" type="java.lang.Object"/>
                     <Column editable="false" title="Marzo" type="java.lang.Object"/>
