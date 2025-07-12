@@ -4,6 +4,7 @@
  */
 package Views;
 
+import Models.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -52,11 +53,15 @@ public class Principal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         btn_cob = new javax.swing.JButton();
         btn_par = new javax.swing.JButton();
+        btn_seguridad = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         content = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mnu_close = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +107,14 @@ public class Principal extends javax.swing.JFrame {
         });
         panel.add(btn_par, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 140, 60));
 
+        btn_seguridad.setText("Bitacora");
+        btn_seguridad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_seguridadActionPerformed(evt);
+            }
+        });
+        panel.add(btn_seguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 50, 140, 60));
+
         jButton6.setText("FACTURAS");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +139,8 @@ public class Principal extends javax.swing.JFrame {
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,13 +153,28 @@ public class Principal extends javax.swing.JFrame {
         panel.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 1070, 840));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 810));
+        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, 820));
+
+        jMenu1.setText("Opciones");
+        jMenuBar1.add(jMenu1);
+
+        mnu_close.setText("x");
+        mnu_close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_closeActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(mnu_close);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +221,17 @@ public class Principal extends javax.swing.JFrame {
         identificarVista(cob);
     }//GEN-LAST:event_btn_parActionPerformed
 
+    private void btn_seguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_seguridadActionPerformed
+        Bitacora bitacora = new Bitacora();
+        identificarVista(bitacora);
+    }//GEN-LAST:event_btn_seguridadActionPerformed
+
+    private void mnu_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_closeActionPerformed
+        LoginUsuario loginUsuario = new LoginUsuario();
+        loginUsuario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnu_closeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +270,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cob;
     private javax.swing.JButton btn_par;
+    private javax.swing.JButton btn_seguridad;
     private javax.swing.JPanel content;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -239,6 +279,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu mnu_close;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

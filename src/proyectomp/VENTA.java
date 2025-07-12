@@ -6,6 +6,7 @@
 package proyectomp;
 import Models.Alumno;
 import Controllers.Alumnos;
+import Controllers.Seguridad;
 import Reportes.Reportes;
 import Views.SeleccionarAlumno;
 import conexion.Conexion;
@@ -37,6 +38,7 @@ import net.sf.jasperreports.engine.JRException;
 import static proyectomp.EMPLEADOSS_CREAR.txtNombre;
 import static proyectomp.LOCAL_REGISTRO.tblLocal;
 import static proyectomp.MostrarVentas.tblMostrarVenta;
+import Models.Usuario;
 
 /**
  *
@@ -626,6 +628,7 @@ public class VENTA extends javax.swing.JFrame {
             TxtGravado.setText(null);
            // Funciones.extraerRangoMaximo();
             txtFactura.setText(Funciones.extraerNumerofactura());
+            Seguridad.isRegisterBitacora(Usuario.getUsuarioLogeadoid() ,Integer.parseInt(Funciones.extraerVentaMax()), "Se realizo nueva factura por parte del usuario "+ Usuario.getUsuarioLogeado(), "FAC");
             
             
       

@@ -4,6 +4,8 @@
  */
 package Views;
 
+import Controllers.Seguridad;
+import Models.Usuario;
 import Reportes.Reportes;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -136,6 +138,7 @@ public class MostrarFacturas extends javax.swing.JPanel {
         if(Controllers.Pagos.AnularFactura(id)){
             JOptionPane.showMessageDialog(null, "Se anulo la Factura Exitosamente.");
             Controllers.Pagos.setListarVentas("");
+            if(Seguridad.isRegisterBitacora(Usuario.getUsuarioLogeadoid() ,Integer.parseInt(id), "Se realizo una anulacion de factura por parte del usuario "+ Usuario.getUsuarioLogeado(), "FAC"));
         }else{
             JOptionPane.showMessageDialog(null, "Algo salio mal, favor contactar con Irving Calix");
         }

@@ -91,11 +91,12 @@ public class LoginUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Views.Principal ventanaPrincipal = new Principal();
         Models.Usuario user = new Usuario();
         user.setUser(txtAlias.getText());
         user.setPassword(txtPasword.getText());
         if(Controllers.Usuarios.verificardatos(user)){
+            Usuario.setUsuarioLogeado(txtAlias.getText());
+            Views.Principal ventanaPrincipal = new Principal();
             ventanaPrincipal.setVisible(true);
             dispose();
         }else{

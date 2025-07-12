@@ -96,7 +96,7 @@ public class Usuarios {
                 String alias = resultSet.getString("alias");
                 String password = resultSet.getString("password");
                 String digitado = alias+password;
-
+                Usuario.setUsuarioLogeadoid(resultSet.getInt("id"));
                 // Verificar la contraseña ingresada utilizando el salt almacenado
                 // Comparar las contraseñas
                 return digitado.equals(usuario.getUser()+usuario.getPassword());

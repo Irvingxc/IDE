@@ -13,6 +13,8 @@ public class Usuario {
     private String user;
     private String password;
     private String salt;
+    private static String userlogeado;
+    private static int userlogeadoid;
 
     public String getSalt() {
         return salt;
@@ -21,9 +23,22 @@ public class Usuario {
     public void setSalt(String salt) {
         this.salt = salt;
     }
+    
+        public static void setUsuarioLogeado(String usuario) {
+        userlogeado = usuario;
+    }
 
-  
+    public static String getUsuarioLogeado() {
+        return userlogeado;
+    }
+    
+    public static void setUsuarioLogeadoid(int usuario) {
+        userlogeadoid = usuario;
+    }
 
+    public static int getUsuarioLogeadoid() {
+        return userlogeadoid;
+    }
   
 
     
