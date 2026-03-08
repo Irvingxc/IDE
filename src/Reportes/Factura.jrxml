@@ -17,7 +17,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select Grado, IIF(Catalogo_Productos.Nombre!='Mensualidad',Catalogo_Productos.Nombre, CONCAT(Catalogo_Productos.Nombre, ' ',Mes)) Modalidad,
+		<![CDATA[select Grade, IIF(Catalogo_Productos.Nombre!='Mensualidad',Catalogo_Productos.Nombre, CONCAT(Catalogo_Productos.Nombre, ' ',Mes)) Modalidad,
 IIF(Catalogo_Productos.Excento=0,Detalle_Pagos.Precio * Detalle_Pagos.cantidad * SAR.Impuesto_Sar, 0) ISV, 
 UPPER(Mes) as Mes, Detalle_Pagos.Precio, CONCAT(Clientes.Nombres,' ', Clientes.Apellidos) Cliente, Detalle_Pagos.cantidad,
 CONCAT(Alumnos.Nombres,' ', Alumnos.Apellidos) Alumno,
@@ -32,7 +32,7 @@ inner join Catalogo_Productos on Catalogo_Productos.id = Detalle_Pagos.id_produc
 inner join Clientes on Clientes.id = Alumnos.Cliente
 where Pagos.id = $P{pa_id};]]>
 	</queryString>
-	<field name="Grado" class="java.lang.String"/>
+	<field name="Grade" class="java.lang.String"/>
 	<field name="Modalidad" class="java.lang.String"/>
 	<field name="ISV" class="java.lang.Double"/>
 	<field name="Mes" class="java.lang.String"/>
@@ -183,7 +183,7 @@ where Pagos.id = $P{pa_id};]]>
 			<textField>
 				<reportElement uuid="8bdf5c1f-8771-401d-b669-8cd59bc4d5f6" x="415" y="157" width="313" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{Grado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Grade}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
