@@ -3103,6 +3103,32 @@ public class Funciones {
             
         }
              }
+           
+           
+           public static boolean yaPageoEsteMes(String alumno, String fechaMensualidad, String idProducto) {
+
+    String sql = "SELECT dbo.fn_YaPagoEseMes(?, CAST(? AS DATE), ?) AS YaPago";
+
+    try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+        ps.setString(1, alumno);
+        ps.setString(2, fechaMensualidad);
+        ps.setString(3, idProducto);
+
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getBoolean("YaPago"); // 1 = true, 0 = false
+            }
+        }
+
+    } catch (SQLException ex) {
+        Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE,
+            "Error al verificar pago del mes: alumno=" + alumno +
+            ", fecha=" + fechaMensualidad, ex);
+    }
+
+    return false;
+}
          
   
           

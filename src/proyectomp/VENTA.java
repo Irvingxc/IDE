@@ -542,7 +542,15 @@ public class VENTA extends javax.swing.JFrame {
                     int mesNumber = calendar.get(Calendar.MONTH);
                     String nombreMes = obtenerNombreMes(mesNumber);
            Mensualidad = "1";
-            
+            if (Funciones.yaPageoEsteMes(txtIdentidad.getText() ,Mes, idProducto)) {
+                JOptionPane.showMessageDialog(
+                null,
+                "Este alumno ya tiene un pago registrado para el mes de " + nombreMes,
+                "Pago duplicado",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return; // detiene el flujo, no registra
+            }
            DefaultTableModel m = (DefaultTableModel) tblDetalle.getModel();
             
            
